@@ -347,7 +347,7 @@ export class QueryCacheManager<TData, TItem> {
   /**
    * Refetch query immediately
    */
-  refetch(key?: string | string[]): void {
+  refetch(key?: string): void {
     try {
       const queryKey = key ? (Array.isArray(key) ? key : [key]) : this.config.queryKey;
       this.config.queryClient.refetchQueries({
@@ -363,7 +363,7 @@ export class QueryCacheManager<TData, TItem> {
    *  Multiple refetch, refetch many endpoints at the same time
    * Usage: cache.refetch(['prisoners', 'visitors]);
    * */
-  refetchMultiple(keys: Array<string | string[]>): void {
+  refetchMultiple(keys: string[]): void {
     keys.forEach((key) => this.refetch(key));
   }
 
