@@ -9,17 +9,20 @@ export interface CacheActions<TData> {
   config: Omit<CacheConfig<TData, unknown>, 'queryClient'>;
 }
 
-export type CustomMutationOptions<TData, TError, TVariables, TContext> =
-  UseMutationOptions<TData, TError, TVariables, TContext> & {
-    notify?: boolean;
-    notifyError?: boolean;
-    errorMessage?: string;
-    notifySuccess?: boolean;
-    successMessage?: string;
-    cacheActions?: CacheActions<TData>[];
-    notificationConfig?: NotificationOptions;
-    getErrorMessage?: (error: TError) => string;
-  };
+export type CustomMutationOptions<TData, TError, TVariables> = UseMutationOptions<
+  TData,
+  TError,
+  TVariables
+> & {
+  notify?: boolean;
+  notifyError?: boolean;
+  errorMessage?: string;
+  notifySuccess?: boolean;
+  successMessage?: string;
+  cacheActions?: CacheActions<TData>[];
+  notificationConfig?: NotificationOptions;
+  getErrorMessage?: (error: TError) => string;
+};
 
 export interface NotificationOptions {
   duration?: number;
