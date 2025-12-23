@@ -49,15 +49,15 @@
     "node": ">=16"
   },
   "scripts": {
-    "build": "tsup && npm run copy-dist",
-    "copy-dist": "cp dist/index.js index.js && cp dist/index.d.ts index.d.ts && cp -r dist/styles styles",
-    "locale-build": "tsup",
     "dev": "tsup --watch",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "locale-build": "tsup",
     "type-check": "tsc --noEmit",
     "prepublishOnly": "npm run build",
-    "test": "echo \"No tests yet\" && exit 0"
+    "lint": "eslint src --ext .ts,.tsx",
+    "build": "tsup && npm run copy-dist",
+    "test": "echo \"No tests yet\" && exit 0",
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "copy-dist": "cp dist/index.js index.js && cp dist/index.d.ts index.d.ts"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.62.11"

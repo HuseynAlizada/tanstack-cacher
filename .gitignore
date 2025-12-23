@@ -8,6 +8,9 @@ dist
 
 # TypeScript
 *.tsbuildinfo
+/index.js
+/index.d.ts
+/styles
 
 # Environment variables
 .env
