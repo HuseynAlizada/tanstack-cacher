@@ -1,11 +1,11 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { QueryCacheManager } from '../managers';
+import { cacheManagerFactory } from '../managers';
 import { runCacheManagers } from '../managers/QueryCacheManager/QueryCache.utils';
 
 import { useNotificationContext } from './useNotificationContext';
 
-import type { CustomMutationOptions, CacheActions } from './types';
+import type { CustomMutationOptions } from './types';
 
 /**
  * useCustomMutation - A type-safe wrapper around React Query's `useMutation`.
@@ -70,8 +70,8 @@ export const useCustomMutation = <TData, TError, TVariables = void>(
       onSuccess?.(data, variables, mResult, context);
 
       if (cacheActions?.length) {
-        cacheActions.forEach(({ type, config }: CacheActions<TData>) => {
-          const manager = new QueryCacheManager({ ...config });
+        cacheActions.forEach(({ type, config }) => {
+          const manager = cacheManagerFactory.create({ ...config });
           runCacheManagers<TData>(type, manager, data);
         });
       }

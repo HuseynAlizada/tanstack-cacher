@@ -4,9 +4,9 @@ import { type CacheConfig } from '../managers';
 
 export type MutationTypes = 'add' | 'invalidate' | 'remove' | 'update';
 
-export interface CacheActions<TData> {
+export interface CacheActions<TData, TItem = unknown> {
   type: MutationTypes;
-  config: Omit<CacheConfig<TData, unknown>, 'queryClient'>;
+  config: Omit<CacheConfig<TData, TItem>, 'queryClient'>;
 }
 
 export type CustomMutationOptions<TData, TError, TVariables> = UseMutationOptions<
