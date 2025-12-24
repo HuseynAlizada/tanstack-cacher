@@ -32,9 +32,9 @@ export class QueryCacheManager<TData, TItem> {
 
       pagination: isPaginated
         ? {
-          ...DEFAULT_PAGINATION_PATHS,
-          ...config.pagination,
-        }
+            ...DEFAULT_PAGINATION_PATHS,
+            ...config.pagination,
+          }
         : undefined,
     };
   }
@@ -370,6 +370,10 @@ export class QueryCacheManager<TData, TItem> {
   removeQuery(key?: string): void {
     const queryKey = key ?? this.config.queryKey;
     this.config.queryClient.removeQueries({ queryKey: [queryKey] });
+  }
+
+  getConfig(): typeof this.config {
+    return this.config;
   }
 
   /**
